@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Create Event 3/3 > Choose a Venue</h1>
+    {{ form_start(form) }}
+    <ul>
+    {% for venue_form in form.children.venues %}
+        {% set index = venue_form.vars.value %}
+        <li>
+            {{ form_widget(venue_form) }}
+            {{ form_label(venue_form) }}
+            ->
+            {% if summary[index]['okay'] %}
+                Okay to go
+            {% else %}
+                Warning:
+                {% if summary[index]['drinks'] is defined %}
+                    There is nothing for
+                    {% for user in summary[index]['drinks'] %}
+                        {{ user }}{% if loop.last == false %},{% endif %}
+                    {% endfor %}
+                    to drink!
+                {% endif %}
+
+                {% if summary[index]['foods'] is defined %}
+                    There is nothing for
+                    {% for user in summary[index]['foods'] %}
+                        {{ user }}{% if loop.last == false %},{% endif %}
+                    {% endfor %}
+                    to eat!
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {{ form_widget(form.children._token) }}
+    <input type="submit" value="Confirm Venue" />
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Event Created!</h1>
+
+    <div>
+        <p>Title: {{ event.title }}</p>
+        <p>Booked for: {{ event.bookedFor|date('Y/m/d H:i') }}</p>
+        <p>At {{ event.venue.name }}</p>
+        <p>List of attendees:</p>
+        <ul>
+            {% for user in event.users %}
+                <li>{{ user.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{{ path('create_event') }}">Create another event</a>
+    <a href="{{ path('homepage') }}">Back to menu</a>
+
+{% endblock %}
