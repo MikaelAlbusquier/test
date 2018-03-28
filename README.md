@@ -3,6 +3,7 @@ timeout_test_mikael
 
 Prerequisite:
 1) You'll need to have composer installed (https://getcomposer.org/download/)
+2) You'll need to have MySQL installed
 
 How to install:
 1) Run 'git clone https://github.com/MikaelAlbusquier/test.git'
