@@ -68,18 +68,16 @@ class BestVenueChoice
      */
     public function hasToDrink(User $user, $drinks)
     {
-        $hasToDrink = false;
         $userDrinks = $user->getDrinks();
 
         /* @var Drink $drink */
         foreach ($userDrinks as $userDrink) {
             if ($drinks->contains($userDrink)) {
-                $hasToDrink = true;
-                break;
+                return true;
             }
         }
 
-        return $hasToDrink;
+        return false;
     }
 
     /**
@@ -93,11 +91,11 @@ class BestVenueChoice
 
         /* @var Food $food */
         foreach ($userFoods as $userFood) {
-            if ($foods->contains($userFood)) {
-                return false;
+            if (!$foods->contains($userFood)) {
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 }

@@ -2,6 +2,9 @@
 
 {% block body %}
     <h1>Create Event 3/3 > Choose a Venue</h1>
+
+    <p>{{ message }}</p>
+
     {{ form_start(form) }}
     <ul>
     {% for venue_form in form.children.venues %}
