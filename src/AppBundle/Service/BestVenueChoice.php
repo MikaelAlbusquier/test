@@ -89,6 +89,10 @@ class BestVenueChoice
     {
         $userFoods = $user->getFoods();
 
+        if ($userFoods->count() === 0) {
+            return true;
+        }
+
         /* @var Food $food */
         foreach ($userFoods as $userFood) {
             if (!$foods->contains($userFood)) {
