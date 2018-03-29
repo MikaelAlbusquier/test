@@ -71,8 +71,9 @@ class BestVenueChoice
         $userDrinks = $user->getDrinks();
 
         /* @var Drink $drink */
-        foreach ($userDrinks as $userDrink) {
-            if ($drinks->contains($userDrink)) {
+        foreach ($drinks as $drink) {
+            // If it contains at least one drink which user likes then it is fine
+            if ($userDrinks->contains($drink)) {
                 return true;
             }
         }
@@ -94,8 +95,9 @@ class BestVenueChoice
         }
 
         /* @var Food $food */
-        foreach ($userFoods as $userFood) {
-            if (!$foods->contains($userFood)) {
+        foreach ($foods as $food) {
+            // If it contains at least one food which user don't mind eating then it is fine
+            if (!$userFoods->contains($food)) {
                 return true;
             }
         }
