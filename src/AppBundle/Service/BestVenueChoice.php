@@ -90,13 +90,14 @@ class BestVenueChoice
     {
         $userFoods = $user->getFoods();
 
+        // USer doesn't mind any food
         if ($userFoods->count() === 0) {
             return true;
         }
 
         /* @var Food $food */
         foreach ($foods as $food) {
-            // If it contains at least one food which user don't mind eating then it is fine
+            // If it doesn't contain a food that user mind eating at least once then it is fine
             if (!$userFoods->contains($food)) {
                 return true;
             }
